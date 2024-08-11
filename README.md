@@ -1,4 +1,4 @@
-# Dhoani Boost
+# Dhoani
 
 Initially written for the purpose of manipulating the search ranking within a certain unnamed platform for a certain unnamed project. For you, this program is a simple traffic generator that utilizes NordVPN's 6000+ servers to generate traffic for website from multiple locations.
 
