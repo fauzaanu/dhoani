@@ -24,7 +24,9 @@ To run Dhoani, you'll need:
 - **Python Packages**: The necessary Python packages can be installed via `poetry` or by using a `requirements.txt` file. The package names can be copied from the `pyproject.toml` file.
 - **Playwright Setup**: After installing the required packages, run `playwright install` to download the necessary browser binaries.
 
-### Note for EU Users
+### Accepting cookies
+
+todo: accept cookies automatically, handle this as a fallback
 
 If you're running the script for EU servers, you may need to manually accept cookies on the first visit to each website. This is a one-time setup due to the use of a persistent browser session.
 
