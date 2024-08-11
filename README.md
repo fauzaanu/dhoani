@@ -1,30 +1,66 @@
 # Dhoani
 
-Initially written for the purpose of manipulating the search ranking within a certain unnamed platform for a certain unnamed project. For you, this program is a simple traffic generator that utilizes NordVPN's 6000+ servers to generate traffic for website from multiple locations.
+Dhoani is a traffic generation script designed to manipulate search rankings on certain platforms by utilizing NordVPN's extensive network of over 6,000 servers. This program automates the process of generating continuous traffic to a specific website by integrating `playwright` for browser automation and `nordvpn_switcher` for rotating VPN servers. While the current implementation provides basic functionality, it serves as a solid foundation for any project requiring automated traffic generation with dynamic IP addresses.
 
-This program does some very basic stuff and you will likely need to modify it to suite your needs. However this program sets a good starting point for any playwright automation project that uses nordvpn to rotate servers due to the integration of both `playwright` and `nordvpn_switcher`.
+## How It Works
 
-1. Initializes Nord VPN and connects to a server
-2. Visits a google search link or any link that is defined in `.env` as `GOOGLE_SEARCH_LINK`
-2. Searches for the first exact match of the search term defined in `.env` as `GOOGLE_SEARCH_TITLE_TEXT`
-3. Clicks on the first link that matches the search term
-4. Waits 5 seconds
-5. Closes the browser
-6. Rotates the VPN server
-7. Repeats the process...
+The script follows these steps:
 
-## Packages Used
-- python-dotenv
-- playwright
-- nordvpn_switcher
+1. **Initialize NordVPN and Connect to a Server**: The script starts by connecting to a random NordVPN server.
+2. **Visit a Predefined Google Search Link**: It navigates to the URL specified in the `.env` file under `GOOGLE_SEARCH_LINK`.
+3. **Search for a Specific Term**: It looks for the first exact match of the search term defined in the `.env` file as `GOOGLE_SEARCH_TITLE_TEXT`.
+4. **Click the Matching Link**: Upon finding the match, the script clicks on the link.
+5. **Wait**: It waits for 5 seconds to simulate user interaction.
+6. **Close the Browser**: The browser is then closed.
+7. **Rotate the VPN Server**: The script switches to a different VPN server.
+8. **Repeat**: The entire process repeats indefinitely.
 
-## Setup
-- You need a NordVPN account to get access to all 6000+ servers
-- You need to have a `.env` file in the format of the `.env_sample` file
-- poetry would make things easy but if you use `requirements.txt` please copy the package names from the `pyproject.toml` file
-- after installation of all packages please run `playwright install` to install the browser binaries
-- For EU countries you may have to click the accept cookies once. Since we use a persistance browser, this process will be once per website
+## Prerequisites
+
+To run Dhoani, you'll need:
+
+- **NordVPN Account**: A valid NordVPN account to access the 6,000+ servers.
+- **.env File**: A `.env` file configured according to the provided `.env_sample`.
+- **Python Packages**: The necessary Python packages can be installed via `poetry` or by using a `requirements.txt` file. The package names can be copied from the `pyproject.toml` file.
+- **Playwright Setup**: After installing the required packages, run `playwright install` to download the necessary browser binaries.
+
+### Note for EU Users
+
+If you're running the script for EU servers, you may need to manually accept cookies on the first visit to each website. This is a one-time setup due to the use of a persistent browser session.
+
+## Installation
+
+1. Clone the repository.
+2. Set up your `.env` file based on the `.env_sample` template.
+3. Install the required Python packages:
+   - Using `poetry`: Run `poetry install`.
+   - Using `pip`: Create a `requirements.txt` from `pyproject.toml` and run `pip install -r requirements.txt`.
+4. Install Playwright browser binaries by running:
+   ```bash
+   playwright install
+   ```
 
 ## Usage
-- Run the program with `python main.py`
 
+To start the program, simply run:
+
+```bash
+python main.py
+```
+
+The script will begin generating traffic according to the predefined configuration.
+
+---
+
+This program provides a good starting point for more complex traffic generation and search manipulation tasks. Modify it to suit your specific needs.
+
+---
+
+Note that playwright has a code generator that can help you to create the code to interact with the browser.
+You can use it to create the code to interact with the browser and then integrate it with the script.
+
+Todo: seperate the playwright code into a different file and import it into the main script to make this more modular.
+
+```bash
+npx playwright codegen
+```
