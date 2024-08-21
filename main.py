@@ -20,6 +20,7 @@ async def google_search_visit() -> None:
             rotate_VPN()
 
             browser = await playwright.chromium.launch_persistent_context(
+                user_data_dir="user_data",
                 headless=False,
                 viewport={"width": 1280, "height": 720}
             )
